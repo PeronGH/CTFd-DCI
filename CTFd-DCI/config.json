@@ -1,4 +1,4 @@
 {
   "name": "CTFd DCI",
-  "route": "/admin/dci"
+  "route": "/admin/dci/list"
 }

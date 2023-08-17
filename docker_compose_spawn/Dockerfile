@@ -14,6 +14,6 @@ RUN apt update -y && \
 # Install Docker CLI and Docker Compose v2
 RUN apt update && apt install -y docker-ce-cli docker-compose-plugin
 
-RUN deno cache "https://deno.land/x/docker_compose_spawn@1.0.0/server.ts"
+RUN deno cache "https://deno.land/x/docker_compose_spawn@1.0.1/server.ts"
 
-CMD ["deno", "run", "-A", "https://deno.land/x/docker_compose_spawn@1.0.0/server.ts"]
+CMD ["deno", "run", "-A", "https://deno.land/x/docker_compose_spawn@1.0.1/server.ts"]
