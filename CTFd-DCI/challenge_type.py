@@ -1,5 +1,6 @@
 from flask import Blueprint
-from CTFd.plugins.challenges import BaseChallenge, Challenges
+from CTFd.plugins.challenges import BaseChallenge
+from .models import DynamicInstanceChallenges
 
 
 class DynamicInstanceChallenge(BaseChallenge):
@@ -24,4 +25,4 @@ class DynamicInstanceChallenge(BaseChallenge):
         template_folder="templates",
         static_folder="assets",
     )
-    challenge_model = Challenges
+    challenge_model = DynamicInstanceChallenges

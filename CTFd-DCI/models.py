@@ -1,7 +1,8 @@
 from CTFd.models import db
+from CTFd.plugins.challenges import Challenges
 
 
-class Instances(db.Model):
+class DynamicInstances(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     # foreign keys
@@ -9,8 +10,8 @@ class Instances(db.Model):
     challenge_id = db.Column(db.Integer, db.ForeignKey("challenges.id"))
 
     # basic info
-    name = db.Column(db.Text)
-    path = db.Column(db.Text)
+    project_name = db.Column(db.Text)
+    stack_path = db.Column(db.Text)
     env = db.Column(db.JSON)
 
     # renew logic
@@ -29,3 +30,11 @@ class Instances(db.Model):
         self.create_at = create_at
         self.expire_at = expire_at
         self.renew_count = renew_count
+
+
+class DynamicInstanceChallenges(Challenges):
+    __mapper_args__ = {"polymorphic_identity": "dynamic_instance"}
+    id = db.Column(
+        db.Integer, db.ForeignKey("challenges.id", ondelete="CASCADE"), primary_key=True
+    )
+    stack_path = db.Column(db.Text)
