@@ -10,7 +10,7 @@ class DynamicInstances(db.Model):
     challenge_id = db.Column(db.Integer, db.ForeignKey("challenges.id"))
 
     # basic info
-    project_name = db.Column(db.Text)
+    project_name = db.Column(db.Text, unique=True, index=True)
     stack_path = db.Column(db.Text)
     env = db.Column(db.JSON)
 
@@ -38,3 +38,13 @@ class DynamicInstanceChallenges(Challenges):
         db.Integer, db.ForeignKey("challenges.id", ondelete="CASCADE"), primary_key=True
     )
     stack_path = db.Column(db.Text)
+
+
+class DCIConfig(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    key = db.Column(db.Text, unique=True, index=True)
+    value = db.Column(db.Text)
+
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value

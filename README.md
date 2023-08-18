@@ -40,8 +40,10 @@ docker compose up
 
 ## TODOs
 
+- [ ] Admin modifying configuration
 - [ ] Admin listing all instances
 - [ ] Admin creating `dynamic instance` challenge
+  - [ ] Admin uploading stack configuration
 - [ ] Admin updating `dynamic instance` challenge
 - [ ] Scheduled cleaning up expired instances every minute
 - [ ] User participating in a `dynamic instance` challenge
