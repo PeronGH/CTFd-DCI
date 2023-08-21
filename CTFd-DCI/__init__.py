@@ -16,8 +16,14 @@ def load(app: CTFdFlask):
     # add challenge type
     CHALLENGE_CLASSES["dynamic_instance"] = DynamicInstanceChallenge
 
-    # handle instance management page
+    # handle listing instance page
     @app.route("/admin/dci/list")
     @admins_only
-    def dci_management_page():
+    def list_dci_page():
         return render_template("admin/page.html", content="<h1>List Instances</h1>")
+
+    # handle configuration page
+    @app.route("/admin/dci/config")
+    @admins_only
+    def config_dci_page():
+        return render_template("admin/page.html", content="<h1>Configuration</h1>")
