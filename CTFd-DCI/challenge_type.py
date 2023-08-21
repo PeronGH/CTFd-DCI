@@ -7,9 +7,9 @@ class DynamicInstanceChallenge(BaseChallenge):
     id = "dynamic_instance"  # Unique identifier used to register challenges
     name = "dynamic_instance"  # Name of a challenge type
     templates = {  # Templates used for each aspect of challenge editing & viewing
-        "create": "/plugins/CTFd-DCI/assets/create.html",
-        "update": "/plugins/CTFd-DCI/assets/update.html",
-        "view": "/plugins/CTFd-DCI/assets/view.html",
+        "create": "/plugins/CTFd-DCI/templates/create.html",
+        "update": "/plugins/CTFd-DCI/templates/update.html",
+        "view": "/plugins/CTFd-DCI/templates/view.html",
     }
     scripts = {  # Scripts that are loaded when a template is loaded
         "create": "/plugins/CTFd-DCI/assets/create.js",

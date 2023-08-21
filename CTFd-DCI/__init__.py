@@ -1,9 +1,8 @@
-from flask import render_template
 from CTFd import CTFdFlask
-from CTFd.utils.decorators import admins_only
 from CTFd.plugins import register_plugin_assets_directory
 from CTFd.plugins.challenges import CHALLENGE_CLASSES
 from .challenge_type import DynamicInstanceChallenge
+from .admin_dci import admin_dci_blueprint
 
 
 def load(app: CTFdFlask):
@@ -16,14 +15,5 @@ def load(app: CTFdFlask):
     # add challenge type
     CHALLENGE_CLASSES["dynamic_instance"] = DynamicInstanceChallenge
 
-    # handle listing instance page
-    @app.route("/admin/dci/list")
-    @admins_only
-    def list_dci_page():
-        return render_template("admin/page.html", content="<h1>List Instances</h1>")
-
-    # handle configuration page
-    @app.route("/admin/dci/config")
-    @admins_only
-    def config_dci_page():
-        return render_template("admin/page.html", content="<h1>Configuration</h1>")
+    # register admin management pages
+    app.register_blueprint(admin_dci_blueprint, url_prefix="/admin/dci")
